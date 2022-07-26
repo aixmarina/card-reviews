@@ -37,3 +37,65 @@ const reviews = [
             "Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ",
     },
 ];
+
+// elements 
+const img = document.getElementById('person-img')
+const author = document.getElementById('author')
+const job = document.getElementById('job')
+const info = document.getElementById('info')
+
+// buttons
+const prev_btn = document.querySelector(".prev-btn")
+const next_btn = document.querySelector(".next-btn")
+const random_btn = document.querySelector(".random-btn")
+
+//value of the first item
+let current_item = 0;
+
+// load initial item
+window.addEventListener('DOMContentLoaded', function () {
+    changeInfo(current_item)
+})
+
+// function to change the info
+
+function changeInfo() {
+    const item = reviews[current_item]
+
+    img.src = item.img
+    author.textContent = item.name
+    job.textContent = item.job
+    info.textContent = item.text
+}
+
+// next button
+
+next_btn.addEventListener("click", function () {
+    current_item++
+    if (current_item > reviews.length - 1) {
+        current_item = 0
+    }
+
+    changeInfo()
+})
+
+// prev button
+
+prev_btn.addEventListener("click", function () {
+    current_item--
+    if (current_item < 0) {
+        current_item = reviews.length - 1
+    }
+    changeInfo()
+})
+
+// surprise button
+random_btn.addEventListener("click", function () {
+    current_item = getRandomNumber()
+    changeInfo()
+})
+
+// function to get a random number between 0 and 3
+function getRandomNumber() {
+    return Math.floor(Math.random() * reviews.length);
+}
