@@ -34,7 +34,7 @@ main {
 }
 main .container {
   width: 80vw;
-  max-width: 1170px;
+  max-width: 600px;
 }
 main .container .title {
   text-align: center;
